@@ -71,6 +71,9 @@ class Exceptions {
       	System.out.println("\ncannot be divided by zero.\n");
         System.exit(0);
     }
+    finallu {
+    System.out.println("Thats how it's done.");
+    }
   }
    
   public static int product(int a, int b){
