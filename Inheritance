@@ -1,0 +1,176 @@
+import java.util.*;
+class InherAndPoly {
+  
+  public static String name;
+  public static int age;
+  public static boolean gender;
+  public static String ethnic;
+  public static double weight;
+  public static double height;
+  public static int ID;
+  public static double salary;
+  public static String pos;
+  
+  public static void main(String[] args) {
+    
+    //Person instantiation and name setting.
+    Person person = new Person();
+    person.setName("Cameron Gibson");
+    //Extended class Employee insantiated and toString called.
+    Person employee = new Employee("Michael Scott", 45, true, "Caucasian", 
+                    187.64, 5.7, 000364, 45000.00, "Regional Manager");
+    System.out.println(employee.toString());
+    //using a sanner to get input for an employee.
+    Person employeeTwo;
+    Scanner s = new Scanner(System.in);
+    System.out.println("\n\nPlease enter the eployee's name.");
+    name = s.nextLine();
+    System.out.println("Please enter the eployee's age.");
+    age = s.nextInt();
+    System.out.println("If employee is male say true, if female, say false.");
+    gender = s.nextBoolean();
+    System.out.println("Please enter the eployee's ethnicity.");
+    ethnic = s.next();
+    System.out.println("Please enter the eployee's weight.");
+    weight = s.nextDouble();
+    System.out.println("Please enter the eployee's height.");
+    height = s.nextDouble();
+    System.out.println("Please enter the eployee's employee ID#.");
+    ID = s.nextInt(); 
+    System.out.println("Please enter the eployee's salary.");
+   	salary = s.nextDouble();
+    System.out.println("Please enter the eployee's position title.");
+    pos = s.nextLine();
+    System.out.println("Thank you, here is your employee's information.\n");
+    employeeTwo = new Employee(name,age,gender,ethnic,weight,height,ID,salary,pos);
+    System.out.println(employeeTwo.toString());
+  }
+}
+
+
+class Person {
+  
+  protected String name;
+  protected int age;
+  protected boolean gender;
+  protected String ethnicity;
+  protected double weight;
+  protected double height;
+  
+  public Person(){
+    //Default Constructor
+  }
+  
+  public Person(String name, int age, boolean gender, String ethnicity,
+                 double weight, double height){ 
+    this.name = name;
+    this.age = age;
+    this.gender = gender;
+    this.ethnicity = ethnicity;
+    this.weight = weight;
+    this.height = height;
+  }
+  
+  public String getName(){
+    return name;
+  }
+  
+  public int getAge(){
+    return age;
+  }
+  
+  public boolean getGender(){
+    return gender;
+  }
+  
+  public String getEthnicity(){
+    return ethnicity;
+  }
+  
+  public double getWeight(){
+    return weight;
+  }
+  
+  public double getHeight(){
+    return height;
+  }
+  
+  public void setName(String name){
+    this.name = name;
+  }
+  
+  public void setAge(int age){
+    this.age = age;
+  }
+  
+  public void setGender(boolean gender){
+    this.gender = gender;
+  }
+  
+  public void setEthnicity(String ethnicity){
+    this.ethnicity = ethnicity;
+  }
+  
+  public void setWeight(double weight){
+    this.weight = weight;
+  }
+  
+  public void setHeight(double height){
+    this.height = height;
+  }
+  
+  public String toString(){
+    String string = "Overriden toString";
+    return string;
+  }  
+}
+
+class Employee extends Person{
+  
+  private int employeeID;
+  private double salary;
+  private String position;
+  
+  public Employee(String name, int age, boolean gender, String ethnicity,
+     double weight, double height, int employeeID, double salary,String position){
+    super(name,age,gender,ethnicity,weight,height);
+    	this.employeeID = employeeID;
+    	this.salary = salary;
+    	this.position = position;
+  }
+  
+  public int getEmployeeID(){
+    return employeeID;
+  }
+  
+  public double getSalary(){
+    return salary;
+  }
+  
+  public String getPosition(){
+    return position;
+  }
+  
+  public void setEmployeeID(int employeeID){
+    this.employeeID = employeeID;
+  }
+  
+  public void setSalary(double salary){
+    this.salary = salary;
+  }
+  
+  public void setPosition(String poisition){
+    this.position = position;
+  }
+  
+  @Override
+  public String toString(){
+    StringBuilder info = new StringBuilder();
+    info.append("<|Employee Information|>\n").append("Name: " + name)
+      .append("\nAge: " + age).append("\nMale: " + gender).append("\nEthnicity: " + ethnicity)
+      .append("\nHeight: " + height).append("\nWeight: " + weight)
+      .append("\nID: " + employeeID).append("\nSalary: " + salary)
+      .append("\nPosition " + position);
+    return info.toString();  
+  }
+}
