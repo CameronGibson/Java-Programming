@@ -71,7 +71,7 @@ class Exceptions {
       	System.out.println("\ncannot be divided by zero.\n");
         System.exit(0);
     }
-    finallu {
+    finally {
     System.out.println("Thats how it's done.");
     }
   }
