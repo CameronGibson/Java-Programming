@@ -1,0 +1,83 @@
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.*;
+class Exceptions {
+  
+  public static int number;
+  public static int numberTwo;
+  public static int result;
+  public static int switchNum;
+  public static final String FINISHED = "yes";
+  public static Scanner s = new Scanner(System.in);
+  public static String userInput;
+  
+  public static void main(String[] args) { 
+    System.out.println("._________________________________.");
+    System.out.println("|        Choose Your Fate         |");
+    System.out.println("|_________________________________|");
+    System.out.println("|1: for Arithmetic Exception      |");
+    System.out.println("|2: for Input Mismatch Exception  |");
+    System.out.println("|_________________________________|");
+    System.out.println("\n\nChoose Your Fate");
+    switchNum = s.nextInt();
+    System.out.println("\nChoice: " + switchNum);
+    while(switchNum < 1 && switchNum > 3){ 
+    switchNum = s.nextInt();
+    }
+    switch(switchNum){
+      case 1: 
+        arithExcept(); //ArithmeticException example.
+        break;
+      case 2:
+        inputMisExcept(); //InputMismatchException example.
+    }
+    System.out.println("\nWould you like to choose another fate? yes/no");
+    userInput = s.next();
+    if (userInput.equals(FINISHED)){
+      main(args);		
+    }else{
+      System.out.println("\nYou've been met with a terrible fate haven't you...");
+      System.exit(0);
+    }
+  } 
+  
+
+  public static void inputMisExcept(){
+    System.out.println("Please enter some number so that I may throw an exception.");
+  	System.out.println("Lets try a string instead ;)\n");
+    boolean continueInput = false;
+    do{
+      try{
+        number = s.nextInt();
+        continueInput = false;
+      }
+      catch (InputMismatchException ex){
+        System.out.println("Incorrect Input");
+        s.nextLine();
+      }
+    }while(continueInput);
+  }
+  
+  public static void arithExcept(){
+    System.out.println("Please enter one number.\n");
+    int a = s.nextInt();
+    System.out.println("\nPlease enter the second number.\n");
+    int b = s.nextInt();
+    try{
+      int result = product(a,b);
+      System.out.println(result);
+    }
+    catch(ArithmeticException ex){
+      	System.out.println("\ncannot be divided by zero.\n");
+        System.exit(0);
+    }
+  }
+   
+  public static int product(int a, int b){
+    if (a == 0 || b == 0){
+      throw new ArithmeticException("cannot divide by zero.");
+    }else{
+         return a * b;
+       }		
+    }  
+  }
