@@ -1,0 +1,65 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+
+class Generics {
+  
+  public static int count; 
+  public static void main(String[] args) {
+    
+   Container<String> strings = new Container<>();
+    strings.add("G");
+    strings.add("E");
+    strings.add("N");
+    strings.add("E");
+    strings.add("R");
+    strings.add("I");
+    strings.add("C");
+    strings.add("S");
+    count = 0;
+	while(strings.size() > count){
+      System.out.println(strings.get(count));
+      count++;
+    }
+    String taken = strings.take(4);
+    System.out.println("\n Took --> " + taken+"\n");
+    count = 0;
+    while(strings.size() > count){
+      System.out.println(strings.get(count));
+      count++;
+    } 
+  }
+}
+
+class Container <T>{
+  
+  private T t;
+  java.util.ArrayList<T> list = new java.util.ArrayList<>();
+  
+  //Add's the specified variable to the end of the list.
+  public void add(T t){
+    list.add(t);
+  }
+  
+  //Returns the variable at the specified index.
+  public T get(int index){
+    return list.get(index);
+  }
+  
+  //Removes and returns the variable from the specified index.
+  public T take(int index){
+    T give = list.get(index);
+    list.remove(index);
+    return give;
+  }
+  
+  //Removes the variable from the specified index.
+  public void remove(int index){
+    list.remove(index);
+  }
+  
+  //Returns the size of the collection.
+  public int size(){
+    return list.size();
+  }
+    }
